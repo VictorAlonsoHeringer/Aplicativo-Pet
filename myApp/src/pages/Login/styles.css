@@ -1,57 +1,65 @@
+/* Container da tela de login */
 .login-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    background-color: #f8f4e4;
-  }
-  
-  .dog-image {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    margin-bottom: 20px;
-  }
-  
-  .input-field {
-    width: 80%;
-    padding: 10px;
-    margin: 10px 0;
-    border-radius: 20px;
-    border: 1px solid #ccc;
-  }
-  
-  .login-button {
-    background-color: #3a7d44;
-    color: white;
-    padding: 10px;
-    border: none;
-    border-radius: 20px;
-    width: 80%;
-    margin-top: 10px;
-  }
-  
-  .register-button {
-    background-color: #f4a261;
-    color: white;
-    padding: 10px;
-    border: none;
-    border-radius: 20px;
-    width: 80%;
-    margin-top: 10px;
-  }
-  
-  .google-login-button {
-    background-color: #e0e0e0;
-    color: black;
-    padding: 10px;
-    border: none;
-    border-radius: 20px;
-    width: 80%;
-    margin-top: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
+  position: relative;
+  height: 100vh; /* Garante que o container tenha altura completa da tela */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end; /* Move os campos para a parte inferior */
+  align-items: center;
+  padding-bottom: 40px; /* Espaçamento na parte inferior */
+  background-image: url('/images/dog.webp'); /* Imagem de fundo */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Estilo para os campos de input */
+.input-field {
+  width: 80%;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 10px; /* Mantém os inputs arredondados */
+  border: 1px solid #ccc;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+/* Estilo para o container dos botões */
+.button-container {
+  display: flex;
+  justify-content: space-between; /* Espaçamento entre os botões */
+  width: 80%; /* Mesma largura que os campos de input */
+  margin-top: 10px;
+}
+
+/* Estilo dos botões de login e cadastro */
+.login-button{
+  width: 48%; /* Cada botão ocupa metade do container */
+  padding: 10px;
+  background-color: #3a7d44; /* Cor do botão de login */
+  color: white;
+  border: none;
+  border-radius: 5px; /* Deixa os botões mais quadrados */
+  text-align: center;
+  cursor: pointer;
+}
+
+.register-button {
+  width: 48%; /* Cada botão ocupa metade do container */
+  padding: 10px;
+  background-color: #f4a261; /* Cor do botão de login */
+  color: white;
+  border: none;
+  border-radius: 5px; /* Deixa os botões mais quadrados */
+  text-align: center;
+  cursor: pointer;
+}
+
+.google-login-button {
+  width: 80%;
+  padding: 10px;
+  background-color: #e0e0e0;
+  color: black;
+  border: none;
+  border-radius: 5px;
+  margin-top: 10px;
+}

@@ -2,14 +2,13 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom'; // Importar useHistory para redirecionamento
 import './styles.css';
 
-const LoginPage: React.FC = () => {
+const Login: React.FC = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const history = useHistory(); // Instância do hook para redirecionar
 
   const handleLogin = () => {
-    console.log("Login attempted");
-    // Lógica de login aqui
+    history.push('/register');
   };
 
   const handleGoogleLogin = () => {
@@ -23,7 +22,6 @@ const LoginPage: React.FC = () => {
 
   return (
     <div className="login-container">
-      <img src="/assets/dog-image.png" alt="dog" className="dog-image" />
       <input
         type="text"
         placeholder="usuário"
@@ -38,13 +36,17 @@ const LoginPage: React.FC = () => {
         onChange={(e) => setPassword(e.target.value)}
         className="input-field"
       />
-      <button onClick={handleLogin} className="login-button">
-        Entrar
-      </button>
+      
+      {/* Container para os botões lado a lado */}
+      <div className="button-container">
+        <button onClick={handleRegisterRedirect} className="register-button">
+          Cadastre-se
+        </button>
 
-      <button onClick={handleRegisterRedirect} className="register-button">
-        Cadastre-se
-      </button>
+        <button onClick={handleLogin} className="login-button">
+          Entrar
+        </button>
+      </div>
 
       <button onClick={handleGoogleLogin} className="google-login-button">
         Entrar com o Google
@@ -53,4 +55,4 @@ const LoginPage: React.FC = () => {
   );
 };
 
-export default LoginPage;
+export default Login;
