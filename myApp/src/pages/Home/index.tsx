@@ -23,7 +23,7 @@ const HomePage: React.FC = () => {
   return (
     <div className="home-container">
       <h1>Bem-vindo!</h1>
-      <p class>Escolha uma das opções abaixo para começar:</p>
+      <p>Escolha uma das opções abaixo para começar:</p>
       
       <button className="home-button" onClick={handleAnimalsManagement}>
         Gerenciar Animais

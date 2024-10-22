@@ -5,11 +5,35 @@ import './styles.css';
 const Login: React.FC = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const history = useHistory(); // Instância do hook para redirecionar
 
-  const handleLogin = () => {
-    history.push('/register');
+  const handleLogin = async () => {
+    try {
+      const response = await fetch('http://localhost:5164/api/tutor/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          username: username,
+          password: password,
+        }),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        console.log('Login realizado com sucesso:', data);
+        history.push('/Home'); // Redireciona para a página de dashboard
+      } else {
+        const errorData = await response.json();
+        setErrorMessage(errorData.message || 'Erro ao fazer login.');
+      }
+    } catch (error) {
+      setErrorMessage('Erro ao fazer login. Tente novamente.');
+    }
   };
+
 
   const handleGoogleLogin = () => {
     console.log("Google login attempted");
@@ -36,7 +60,8 @@ const Login: React.FC = () => {
         onChange={(e) => setPassword(e.target.value)}
         className="input-field"
       />
-      
+      {errorMessage && <div className="error-message">{errorMessage}</div>}
+
       {/* Container para os botões lado a lado */}
       <div className="button-container">
         <button onClick={handleRegisterRedirect} className="register-button">

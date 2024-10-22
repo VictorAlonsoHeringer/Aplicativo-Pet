@@ -1,7 +1,7 @@
 /* Container da tela de login */
 .login-container {
   position: relative;
-  height: 100vh; /* Garante que o container tenha altura completa da tela */
+  height: 95vh; /* Garante que o container tenha altura completa da tela */
   display: flex;
   flex-direction: column;
   justify-content: flex-end; /* Move os campos para a parte inferior */
@@ -14,7 +14,7 @@
 }
 
 /* Estilo para os campos de input */
-.input-field {
+.login-container .input-field {
   width: 80%;
   padding: 10px;
   margin: 10px 0;
@@ -24,7 +24,7 @@
 }
 
 /* Estilo para o container dos botões */
-.button-container {
+.login-container .button-container {
   display: flex;
   justify-content: space-between; /* Espaçamento entre os botões */
   width: 80%; /* Mesma largura que os campos de input */
@@ -32,7 +32,7 @@
 }
 
 /* Estilo dos botões de login e cadastro */
-.login-button{
+.login-container .login-button{
   width: 48%; /* Cada botão ocupa metade do container */
   padding: 10px;
   background-color: #3a7d44; /* Cor do botão de login */
@@ -43,7 +43,7 @@
   cursor: pointer;
 }
 
-.register-button {
+.login-container .register-button {
   width: 48%; /* Cada botão ocupa metade do container */
   padding: 10px;
   background-color: #f4a261; /* Cor do botão de login */
@@ -54,7 +54,7 @@
   cursor: pointer;
 }
 
-.google-login-button {
+.login-container .google-login-button {
   width: 80%;
   padding: 10px;
   background-color: #e0e0e0;
