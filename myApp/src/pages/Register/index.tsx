@@ -6,6 +6,7 @@ const RegisterPage: React.FC = () => {
   const [userType, setUserType] = useState<string>(''); // Inicialmente, sem escolha
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState(''); // Novo estado para confirmar a senha
   const [email, setEmail] = useState('');
   const [telefone, setTelefone] = useState('');
   const [endereco, setEndereco] = useState('');
@@ -16,6 +17,10 @@ const RegisterPage: React.FC = () => {
   const validateForm = () => {
     if (!username || !password || !email || !telefone || !endereco) {
       setErrorMessage('Por favor, preencha todos os campos obrigatórios.');
+      return false;
+    }
+    if (password !== confirmPassword) {
+      setErrorMessage('As senhas não coincidem.');
       return false;
     }
     setErrorMessage(null);
@@ -43,7 +48,7 @@ const RegisterPage: React.FC = () => {
     };
 
     try {
-      const response = await fetch('http://localhost:5164/api/tutor', { // URL fictícia do backend
+      const response = await fetch('http://localhost:5164/api/tutor', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -52,7 +57,8 @@ const RegisterPage: React.FC = () => {
       });
 
       if (!response.ok) {
-        throw new Error('Falha ao registrar. Tente novamente.');
+        const errorData = await response.json();
+        throw new Error(errorData.message || 'Falha ao registrar. Tente novamente.');
       }
 
       const data = await response.json();
@@ -61,7 +67,7 @@ const RegisterPage: React.FC = () => {
       // Redireciona após o sucesso
       history.push('/');
     } catch (error) {
-      setErrorMessage('Falha ao registrar. Tente novamente.');
+      setErrorMessage(error.message); // Exibir mensagem de erro ao usuário
     } finally {
       setLoading(false); // Finaliza o loader
     }
@@ -85,7 +91,7 @@ const RegisterPage: React.FC = () => {
             <i className="fas fa-user"></i> {/* Ícone de tutor */}
             Sou Tutor
           </button>
-          <button onClick={() => handleUserTypeSelection('clinica')} className="user-type-button">
+          <button onClick={() => handleUserTypeSelection('clinica')} className="user-type-button" disabled>
             <i className="fas fa-hospital"></i> {/* Ícone de clínica */}
             Sou Clínica
           </button>
@@ -132,6 +138,13 @@ const RegisterPage: React.FC = () => {
             placeholder="Senha*"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            className="input-field"
+          />
+          <input
+            type="password"
+            placeholder="Confirme sua senha*"
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)} // Novo campo de confirmação de senha
             className="input-field"
           />
 

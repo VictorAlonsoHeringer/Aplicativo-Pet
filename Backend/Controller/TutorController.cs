@@ -38,8 +38,16 @@ namespace Backend.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(Tutor newTutor)
         {
-            await _tutorService.CreateAsync(newTutor);
-            return CreatedAtAction(nameof(Get), new { id = newTutor.Id }, newTutor);
+            try
+            {
+                await _tutorService.CreateAsync(newTutor);
+                return CreatedAtAction(nameof(Get), new { id = newTutor.Id }, newTutor);
+            }
+            catch (InvalidOperationException ex)
+            {
+                // Retorna um erro 400 com a mensagem da exceção (ex: email duplicado)
+                return BadRequest(new { message = ex.Message });
+            }
         }
 
         // Rota de login

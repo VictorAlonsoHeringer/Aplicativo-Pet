@@ -1,6 +1,7 @@
 using Backend.Models;
 using Backend.Services;
 using MongoDB.Driver;
+using MongoDB.Bson;
 using Microsoft.Extensions.Options;
 using Microsoft.AspNetCore.Cors;
 
@@ -14,7 +15,14 @@ builder.Services.Configure<MongoDBSettings>(
 builder.Services.AddSingleton<IMongoClient>(sp => 
 {
     var settings = sp.GetRequiredService<IOptions<MongoDBSettings>>().Value;
-    return new MongoClient(settings.ConnectionString); // Usando string de conexão diretamente
+
+    // Configurar MongoClientSettings usando a string de conexão
+    var mongoSettings = MongoClientSettings.FromConnectionString(settings.ConnectionString);
+
+    // Definir a versão da API do servidor para a V1, como no exemplo da documentação
+    mongoSettings.ServerApi = new ServerApi(ServerApiVersion.V1);
+
+    return new MongoClient(mongoSettings); // Retornar o MongoClient configurado
 });
 
 // Adicionar o TutorService como Singleton para ser injetado nos controladores

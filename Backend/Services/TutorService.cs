@@ -23,9 +23,17 @@ namespace Backend.Services
 
         public async Task CreateAsync(Tutor tutor)
         {
+            // Verificar se já existe um tutor com o mesmo email
+            var existingTutor = await _tutors.Find(t => t.Email == tutor.Email).FirstOrDefaultAsync();
+            
+            if (existingTutor != null)
+            {
+                throw new InvalidOperationException("Este email já está registrado.");
+            }
+
             // Gerar o hash da senha antes de salvar
             tutor.Senha = BCrypt.Net.BCrypt.HashPassword(tutor.Senha);
-            
+
             // O MongoDB gera o ObjectId automaticamente
             await _tutors.InsertOneAsync(tutor);
         }
@@ -38,7 +46,7 @@ namespace Backend.Services
 
         public async Task<Tutor?> ValidateLoginAsync(string username, string password)
         {
-            // Buscar tutor pelo nome de usuário ou email
+            // Buscar tutor pelo email (pode-se modificar para nome de usuário, se necessário)
             var tutor = await _tutors.Find(t => t.Email == username).FirstOrDefaultAsync();
             if (tutor != null && BCrypt.Net.BCrypt.Verify(password, tutor.Senha))
             {
