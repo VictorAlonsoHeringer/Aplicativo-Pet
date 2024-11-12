@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Aplicativo-Pet\\backend\\Backend.csproj": {}
+    "C:\\Users\\igorl\\Aplicativo-Pet\\Backend\\Backend.csproj": {}
   },
   "projects": {
-    "C:\\Aplicativo-Pet\\backend\\Backend.csproj": {
+    "C:\\Users\\igorl\\Aplicativo-Pet\\Backend\\Backend.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Aplicativo-Pet\\backend\\Backend.csproj",
+        "projectUniqueName": "C:\\Users\\igorl\\Aplicativo-Pet\\Backend\\Backend.csproj",
         "projectName": "Backend",
-        "projectPath": "C:\\Aplicativo-Pet\\backend\\Backend.csproj",
-        "packagesPath": "C:\\Users\\victo\\.nuget\\packages\\",
-        "outputPath": "C:\\Aplicativo-Pet\\backend\\obj\\",
+        "projectPath": "C:\\Users\\igorl\\Aplicativo-Pet\\Backend\\Backend.csproj",
+        "packagesPath": "C:\\Users\\igorl\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\igorl\\Aplicativo-Pet\\Backend\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\victo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\igorl\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -89,7 +89,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.401/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

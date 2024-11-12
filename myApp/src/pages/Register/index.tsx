@@ -13,6 +13,7 @@ const RegisterPage: React.FC = () => {
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [loading, setLoading] = useState(false); // Para o loader durante a submissão
   const history = useHistory();
+  const [clinicas, setClinicas] = useState<string[]>([]);
 
   const validateForm = () => {
     if (!username || !password || !email || !telefone || !endereco) {
@@ -31,6 +32,12 @@ const RegisterPage: React.FC = () => {
     setUserType(type);
   };
 
+  const handleAddClinica = (novaClinica: string) => {
+    if (novaClinica) {
+      setClinicas([...clinicas, novaClinica]);
+    }
+  };
+
   const handleRegister = async () => {
     if (!validateForm()) {
       return;
@@ -45,10 +52,11 @@ const RegisterPage: React.FC = () => {
       telefone: telefone,
       endereco: endereco,
       tipo: userType,
+      clinicas: userType === 'veterinario' ? clinicas : [],
     };
 
     try {
-      const response = await fetch('http://localhost:5164/api/tutor', {
+      const response = await fetch('http://localhost:5164/api/veterinario', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -91,16 +99,32 @@ const RegisterPage: React.FC = () => {
             <i className="fas fa-user"></i> {/* Ícone de tutor */}
             Sou Tutor
           </button>
-          <button onClick={() => handleUserTypeSelection('clinica')} className="user-type-button" disabled>
-            <i className="fas fa-hospital"></i> {/* Ícone de clínica */}
-            Sou Clínica
+          <button onClick={() => handleUserTypeSelection('veterinario')} className="user-type-button">
+            <i className="fas fa-user-md"></i> {/* Ícone de veterinário */}
+            Sou Veterinário
           </button>
+        </div>
+      )}
+
+      {userType === 'veterinario' && (
+        <div>
+          <input
+            type="text"
+            placeholder="Nome da Clínica"
+            onBlur={(e) => handleAddClinica(e.target.value)}
+            className="input-field"
+          />
+          <ul>
+            {clinicas.map((clinica, index) => (
+              <li key={index}>{clinica}</li>
+            ))}
+          </ul>
         </div>
       )}
 
       {userType && (
         <div className={`${userType}-form`}>
-          <h2>Cadastro de {userType === 'tutor' ? 'Tutor' : 'Clínica'}</h2>
+          <h2>Cadastro de {userType === 'tutor' ? 'Tutor' : 'Veterinário'}</h2>
           
           {/* Mensagem de erro */}
           {errorMessage && <div className="error-message">{errorMessage}</div>}
@@ -155,7 +179,7 @@ const RegisterPage: React.FC = () => {
             </button>
           ) : (
             <button onClick={handleRegister} className="register-button">
-              Cadastrar {userType === 'tutor' ? 'Tutor' : 'Clínica'}
+              Cadastrar {userType === 'tutor' ? 'Tutor' : 'Veterinário'}
             </button>
           )}
         </div>

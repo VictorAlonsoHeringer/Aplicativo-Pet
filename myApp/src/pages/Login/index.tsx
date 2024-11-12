@@ -10,17 +10,17 @@ const Login: React.FC = () => {
 
   const handleLogin = async () => {
     try {
-      const response = await fetch('http://localhost:5164/api/tutor/login', {
+      const response = await fetch('http://localhost:5164/api/veterinario/login', { // Altere aqui
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          username: username,
+          email: username, // Certifique-se de passar o campo correto
           password: password,
         }),
       });
-
+  
       if (response.ok) {
         const data = await response.json();
         console.log('Login realizado com sucesso:', data);
