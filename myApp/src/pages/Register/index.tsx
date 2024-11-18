@@ -54,30 +54,56 @@ const RegisterPage: React.FC = () => {
       tipo: userType,
       clinicas: userType === 'veterinario' ? clinicas : [],
     };
+    if(userType === 'veterinario'){
+      try {
+        const response = await fetch('http://localhost:5164/api/veterinario', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(userData),
+        });
 
-    try {
-      const response = await fetch('http://localhost:5164/api/veterinario', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(userData),
-      });
+        if (!response.ok) {
+          const errorData = await response.json();
+          throw new Error(errorData.message || 'Falha ao registrar. Tente novamente.');
+        }
 
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.message || 'Falha ao registrar. Tente novamente.');
+        const data = await response.json();
+        console.log('Usuário registrado com sucesso:', data);
+
+        // Redireciona após o sucesso
+        history.push('/');
+      } catch (error) {
+        setErrorMessage(error.message); // Exibir mensagem de erro ao usuário
+      } finally {
+        setLoading(false); // Finaliza o loader
       }
+    }else{
+      try {
+        const response = await fetch('http://localhost:5164/api/tutor', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(userData),
+        });
 
-      const data = await response.json();
-      console.log('Usuário registrado com sucesso:', data);
+        if (!response.ok) {
+          const errorData = await response.json();
+          throw new Error(errorData.message || 'Falha ao registrar. Tente novamente.');
+        }
 
-      // Redireciona após o sucesso
-      history.push('/');
-    } catch (error) {
-      setErrorMessage(error.message); // Exibir mensagem de erro ao usuário
-    } finally {
-      setLoading(false); // Finaliza o loader
+        const data = await response.json();
+        console.log('Usuário registrado com sucesso:', data);
+
+        // Redireciona após o sucesso
+        history.push('/');
+      } catch (error) {
+        setErrorMessage(error.message); // Exibir mensagem de erro ao usuário
+      } finally {
+        setLoading(false); // Finaliza o loader
+      }
     }
   };
 

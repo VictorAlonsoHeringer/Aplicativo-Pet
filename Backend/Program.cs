@@ -28,6 +28,7 @@ builder.Services.AddSingleton<IMongoClient>(sp =>
 // Adicionar o TutorService como Singleton para ser injetado nos controladores
 builder.Services.AddSingleton<TutorService>();
 builder.Services.AddSingleton<VeterinarioService>();
+builder.Services.AddSingleton<AnimalService>();
 
 // Configuração do CORS
 builder.Services.AddCors(options =>

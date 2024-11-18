@@ -71,7 +71,7 @@
 
 /* Formulário de tutor e clínica com a mesma estrutura */
 .register-container .tutor-form,
-.register-container .clinica-form {
+.register-container .veterinario-form {
   display: flex;
   flex-direction: column;
   align-items: center;

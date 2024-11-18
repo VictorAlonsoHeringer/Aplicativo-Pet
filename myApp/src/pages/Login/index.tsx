@@ -10,7 +10,7 @@ const Login: React.FC = () => {
 
   const handleLogin = async () => {
     try {
-      const response = await fetch('http://localhost:5164/api/veterinario/login', { // Altere aqui
+      const response = await fetch('http://localhost:5164/api/tutor/login', { // Altere aqui
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -24,13 +24,37 @@ const Login: React.FC = () => {
       if (response.ok) {
         const data = await response.json();
         console.log('Login realizado com sucesso:', data);
+        localStorage.setItem('userId', data.tutor.id);
         history.push('/Home'); // Redireciona para a página de dashboard
       } else {
         const errorData = await response.json();
         setErrorMessage(errorData.message || 'Erro ao fazer login.');
       }
     } catch (error) {
-      setErrorMessage('Erro ao fazer login. Tente novamente.');
+      try {
+        const response = await fetch('http://localhost:5164/api/veterinario/login', { // Altere aqui
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            email: username, // Certifique-se de passar o campo correto
+            password: password,
+          }),
+        });
+    
+        if (response.ok) {
+          const data = await response.json();
+          console.log('Login realizado com sucesso:', data);
+          localStorage.setItem('userId', data.tutor.id);
+          history.push('/Home'); // Redireciona para a página de dashboard
+        } else {
+          const errorData = await response.json();
+          setErrorMessage(errorData.message || 'Erro ao fazer login.');
+        }
+      } catch (error) {
+        setErrorMessage('Erro ao fazer login. Tente novamente.');
+      }
     }
   };
 

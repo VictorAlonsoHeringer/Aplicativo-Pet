@@ -6,8 +6,7 @@ const HomePage: React.FC = () => {
   const history = useHistory();
 
   const handleAnimalsManagement = () => {
-    console.log("Gerenciar Animais");
-    // Navegar para outra página de gerenciamento de animais, se existir
+    history.push('/animal-list'); // Redirecionar para a página de listagem de animais
   };
 
   const handleVaccineHistory = () => {

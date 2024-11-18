@@ -54,7 +54,7 @@ namespace Backend.Controllers
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] TutorLoginRequest request)
         {
-            var tutor = await _tutorService.ValidateLoginAsync(request.Username, request.Password);
+            var tutor = await _tutorService.ValidateLoginAsync(request.Email, request.Password);
 
             if (tutor == null)
             {
@@ -103,7 +103,7 @@ namespace Backend.Controllers
     // Classe auxiliar para requisição de login
     public class TutorLoginRequest
     {
-        public string Username { get; set; } = null!;
+        public string Email { get; set; } = null!;
         public string Password { get; set; } = null!;
     }
 }
