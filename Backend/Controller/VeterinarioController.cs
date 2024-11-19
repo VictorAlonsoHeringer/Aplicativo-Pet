@@ -16,7 +16,7 @@ namespace Backend.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateVeterinario(Veterinario newVet)
+        public async Task<IActionResult> CreateVeterinario([FromBody] Veterinario newVet)
         {
             try
             {
@@ -41,7 +41,7 @@ namespace Backend.Controllers
 
             return Ok(veterinario);
         }
-        
+
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] VeterinarioLoginRequest request)
         {
@@ -49,7 +49,7 @@ namespace Backend.Controllers
 
             if (veterinario == null)
             {
-                return Unauthorized(new { message = "Usuário ou senha inválidos" });
+                return Unauthorized(new { message = "Usuário ou senha inválidos." });
             }
 
             return Ok(new { message = "Login realizado com sucesso", veterinario });
@@ -60,6 +60,5 @@ namespace Backend.Controllers
             public string Email { get; set; } = null!;
             public string Password { get; set; } = null!;
         }
-
     }
 }

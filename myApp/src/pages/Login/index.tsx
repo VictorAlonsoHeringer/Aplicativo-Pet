@@ -5,18 +5,24 @@ import './styles.css';
 const Login: React.FC = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [userType, setUserType] = useState('tutor'); // 'tutor' ou 'veterinario'
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const history = useHistory(); // Instância do hook para redirecionar
 
   const handleLogin = async () => {
     try {
-      const response = await fetch('http://localhost:5164/api/tutor/login', { // Altere aqui
+      const endpoint =
+        userType === 'tutor'
+          ? 'http://localhost:5164/api/tutor/login'
+          : 'http://localhost:5164/api/veterinario/login';
+  
+      const response = await fetch(endpoint, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          email: username, // Certifique-se de passar o campo correto
+          email: username,
           password: password,
         }),
       });
@@ -24,45 +30,28 @@ const Login: React.FC = () => {
       if (response.ok) {
         const data = await response.json();
         console.log('Login realizado com sucesso:', data);
-        localStorage.setItem('userId', data.tutor.id);
-        history.push('/Home'); // Redireciona para a página de dashboard
+  
+        if (userType === 'tutor' && data.tutor) {
+          localStorage.setItem('userId', data.tutor.id);
+          localStorage.setItem('role', 'tutor');
+        } else if (userType === 'veterinario' && data.veterinario) {
+          localStorage.setItem('userId', data.veterinario.id);
+          localStorage.setItem('role', 'veterinario');
+        } else {
+          throw new Error('Formato de resposta inválido.');
+        }
+  
+        history.push('/home'); // Redireciona para a página principal
       } else {
         const errorData = await response.json();
         setErrorMessage(errorData.message || 'Erro ao fazer login.');
       }
     } catch (error) {
-      try {
-        const response = await fetch('http://localhost:5164/api/veterinario/login', { // Altere aqui
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            email: username, // Certifique-se de passar o campo correto
-            password: password,
-          }),
-        });
-    
-        if (response.ok) {
-          const data = await response.json();
-          console.log('Login realizado com sucesso:', data);
-          localStorage.setItem('userId', data.tutor.id);
-          history.push('/Home'); // Redireciona para a página de dashboard
-        } else {
-          const errorData = await response.json();
-          setErrorMessage(errorData.message || 'Erro ao fazer login.');
-        }
-      } catch (error) {
-        setErrorMessage('Erro ao fazer login. Tente novamente.');
-      }
+      console.error('Erro durante o login:', error);
+      setErrorMessage('Erro ao fazer login. Tente novamente.');
     }
   };
-
-
-  const handleGoogleLogin = () => {
-    console.log("Google login attempted");
-    // Lógica de login com Google aqui
-  };
+  
 
   const handleRegisterRedirect = () => {
     history.push('/register'); // Redirecionar para a tela de registro
@@ -70,36 +59,39 @@ const Login: React.FC = () => {
 
   return (
     <div className="login-container">
+      <select
+        value={userType}
+        onChange={(e) => setUserType(e.target.value)}
+        className="input-field"
+      >
+        <option value="tutor">Tutor</option>
+        <option value="veterinario">Veterinário</option>
+      </select>
+
       <input
         type="text"
-        placeholder="usuário"
+        placeholder="Email"
         value={username}
         onChange={(e) => setUsername(e.target.value)}
         className="input-field"
       />
       <input
         type="password"
-        placeholder="senha"
+        placeholder="Senha"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
         className="input-field"
       />
       {errorMessage && <div className="error-message">{errorMessage}</div>}
 
-      {/* Container para os botões lado a lado */}
       <div className="button-container">
         <button onClick={handleRegisterRedirect} className="register-button">
           Cadastre-se
         </button>
-
         <button onClick={handleLogin} className="login-button">
           Entrar
         </button>
       </div>
-
-      <button onClick={handleGoogleLogin} className="google-login-button">
-        Entrar com o Google
-      </button>
     </div>
   );
 };

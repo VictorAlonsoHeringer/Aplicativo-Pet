@@ -25,10 +25,11 @@ builder.Services.AddSingleton<IMongoClient>(sp =>
     return new MongoClient(mongoSettings); // Retornar o MongoClient configurado
 });
 
-// Adicionar o TutorService como Singleton para ser injetado nos controladores
+// ** Registro dos Serviços **
 builder.Services.AddSingleton<TutorService>();
 builder.Services.AddSingleton<VeterinarioService>();
 builder.Services.AddSingleton<AnimalService>();
+builder.Services.AddSingleton<VacinaService>(); // Registro do VacinaService
 
 // Configuração do CORS
 builder.Services.AddCors(options =>
@@ -42,6 +43,7 @@ builder.Services.AddCors(options =>
     });
 });
 
+// Configuração de controladores e Swagger
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -55,13 +57,11 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-// Mover o middleware de CORS para cima, antes de https e autorização
+// Middleware de CORS antes de HTTPS e autorização
 app.UseCors("AllowFrontend");
 
 app.UseHttpsRedirection();
-
 app.UseAuthorization();
-
 app.MapControllers();
 
 app.Run();

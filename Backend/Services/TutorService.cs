@@ -19,13 +19,12 @@ namespace Backend.Services
             await _tutors.Find(tutor => true).ToListAsync();
 
         public async Task<Tutor?> GetAsync(string id) =>
-            await _tutors.Find<Tutor>(tutor => tutor.Id == id).FirstOrDefaultAsync();
+            await _tutors.Find(tutor => tutor.Id == id).FirstOrDefaultAsync();
 
         public async Task CreateAsync(Tutor tutor)
         {
             // Verificar se já existe um tutor com o mesmo email
             var existingTutor = await _tutors.Find(t => t.Email == tutor.Email).FirstOrDefaultAsync();
-            
             if (existingTutor != null)
             {
                 throw new InvalidOperationException("Este email já está registrado.");
@@ -34,20 +33,29 @@ namespace Backend.Services
             // Gerar o hash da senha antes de salvar
             tutor.Senha = BCrypt.Net.BCrypt.HashPassword(tutor.Senha);
 
-            // O MongoDB gera o ObjectId automaticamente
+            // Inserir o tutor no banco de dados
             await _tutors.InsertOneAsync(tutor);
         }
 
-        public async Task UpdateAsync(string id, Tutor updatedTutor) =>
+        public async Task UpdateAsync(string id, Tutor updatedTutor)
+        {
+            // Garantir que o hash da senha seja mantido ao atualizar
+            var existingTutor = await _tutors.Find(t => t.Id == id).FirstOrDefaultAsync();
+            if (existingTutor != null)
+            {
+                updatedTutor.Senha = existingTutor.Senha;
+            }
+
             await _tutors.ReplaceOneAsync(tutor => tutor.Id == id, updatedTutor);
+        }
 
         public async Task RemoveAsync(string id) =>
             await _tutors.DeleteOneAsync(tutor => tutor.Id == id);
 
-        public async Task<Tutor?> ValidateLoginAsync(string username, string password)
+        public async Task<Tutor?> ValidateLoginAsync(string email, string password)
         {
-            // Buscar tutor pelo email (pode-se modificar para nome de usuário, se necessário)
-            var tutor = await _tutors.Find(t => t.Email == username).FirstOrDefaultAsync();
+            // Buscar tutor pelo email
+            var tutor = await _tutors.Find(t => t.Email == email).FirstOrDefaultAsync();
             if (tutor != null && BCrypt.Net.BCrypt.Verify(password, tutor.Senha))
             {
                 return tutor; // Retorna o tutor se a senha for válida

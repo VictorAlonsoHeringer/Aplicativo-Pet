@@ -40,7 +40,7 @@ namespace Backend.Controllers
 
             if (animals == null || animals.Count == 0)
             {
-                return NotFound(new { message = "Nenhum animal encontrado para esse tutor." });
+                return Ok(new List<Animal>());
             }
 
             return animals;

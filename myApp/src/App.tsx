@@ -7,6 +7,7 @@ import Register from './pages/Register';
 import Home from './pages/Home';
 import AnimalList from './pages/AnimalList';
 import AnimalForm from './pages/AnimalForm';
+import ControleDeVacinas from './pages/ControleDeVacinas';
 
 const App: React.FC = () => (
   <IonApp>
@@ -17,6 +18,7 @@ const App: React.FC = () => (
         <Route exact path="/home" component={Home} />
         <Route exact path="/animal-list" component={AnimalList} />
         <Route exact path="/animal-form" component={AnimalForm} />
+        <Route exact path="/vaccine-control" component={ControleDeVacinas} />
       </IonRouterOutlet>
     </IonReactRouter>
   </IonApp>

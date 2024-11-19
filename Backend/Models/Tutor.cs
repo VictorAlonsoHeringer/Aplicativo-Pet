@@ -13,5 +13,6 @@ namespace Backend.Models
         public string Telefone { get; set; } = null!;
         public string Endereco { get; set; } = null!;
         public string Senha { get; set; } = null!;
+        public string Role { get; set; } = "tutor";
     }
 }

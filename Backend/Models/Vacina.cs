@@ -3,15 +3,14 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace Backend.Models
 {
-    public class Veterinario
+    public class Vacina
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
         public string? Id { get; set; }
         public string Nome { get; set; } = null!;
-        public string Email { get; set; } = null!;
-        public string Senha { get; set; } = null!;
-        public List<string> Clinicas { get; set; } = new List<string>();
-        public string Role { get; set; } = "veterinario";
+        public string Tipo { get; set; } = null!;
+        public DateTime Validade { get; set; }
+        public string VeterinarioId { get; set; } = null!;
     }
 }

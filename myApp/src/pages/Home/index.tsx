@@ -4,9 +4,14 @@ import './styles.css';
 
 const HomePage: React.FC = () => {
   const history = useHistory();
+  const role = localStorage.getItem('role'); // Obtemos o papel do usuário logado (tutor ou veterinário)
 
   const handleAnimalsManagement = () => {
     history.push('/animal-list'); // Redirecionar para a página de listagem de animais
+  };
+
+  const handleVaccineControl = () => {
+    history.push('/vaccine-control'); // Redirecionar para a página de controle de vacinas
   };
 
   const handleVaccineHistory = () => {
@@ -23,7 +28,8 @@ const HomePage: React.FC = () => {
     <div className="home-container">
       <h1>Bem-vindo!</h1>
       <p>Escolha uma das opções abaixo para começar:</p>
-      
+
+      {/* Opções disponíveis para todos */}
       <button className="home-button" onClick={handleAnimalsManagement}>
         Gerenciar Animais
       </button>
@@ -35,6 +41,13 @@ const HomePage: React.FC = () => {
       <button className="home-button" onClick={handleSettings}>
         Configurações
       </button>
+
+      {/* Opções específicas para veterinários */}
+      {role === 'veterinario' && (
+        <button className="home-button" onClick={handleVaccineControl}>
+          Controle de Vacinas
+        </button>
+      )}
     </div>
   );
 };
