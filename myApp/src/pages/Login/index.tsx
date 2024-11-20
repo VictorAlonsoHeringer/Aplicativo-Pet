@@ -63,7 +63,9 @@ const Login: React.FC = () => {
 
       {/* Coluna direita: Formulário de login */}
       <div className="right-column">
+        
         <div className="login-container">
+        <h1 className="login-title">Login</h1>
           <select
             value={userType}
             onChange={(e) => setUserType(e.target.value)}

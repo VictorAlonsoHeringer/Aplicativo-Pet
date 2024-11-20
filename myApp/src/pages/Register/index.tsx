@@ -115,12 +115,12 @@ const RegisterPage: React.FC = () => {
     <div className="register-container">
       {/* Ícone de Voltar no canto superior esquerdo */}
       <button onClick={handleLoginRedirect} className="back-icon">
-        <img src="public\images\botao voltar verde.svg" alt="Voltar"/>
+        <img src="public\images\botao_voltar_verde.svg" alt="Voltar"/>
       </button>
 
       {userType === '' && (
         <div className="choose-container">
-          <h2>Escolha o tipo de cadastro< /h2>
+          <h2>Escolha o tipo de cadastro</h2>
           <button onClick={() => handleUserTypeSelection('tutor')} className="tutor-type-button">
           <img src="public\images\carbon_dog-walker.svg" alt="Dog Walker Icon" /> {/* Ícone de tutor */}
             Sou Tutor
