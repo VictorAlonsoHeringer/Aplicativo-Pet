@@ -68,7 +68,16 @@
   border-radius: 10px;
   cursor: pointer;
   position: relative;
+}.tutor-type-button:hover {
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+  transform: translateY(-2px);
 }
+
+.veterinario-type-button:hover {
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+  transform: translateY(-2px);
+}
+
 .veterinario-type-button{
   width: 250px;
   height: 200px;
