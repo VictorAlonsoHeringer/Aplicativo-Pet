@@ -1,4 +1,8 @@
 /* Container principal */
+*{font-family: neulis;
+
+}
+
 .register-container {
   position: relative;
   display: flex;
@@ -7,7 +11,7 @@
   justify-content: center;
   height: 95vh;
   padding-bottom: 40px;
-  background-image: url('/images/cat.webp'); /* Imagem de fundo */
+  background-color: antiquewhite; /* Imagem de fundo */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -21,7 +25,6 @@
   background: none;
   border: none;
   font-size: 1.5rem;
-  color: #333;
   cursor: pointer;
 }
 
@@ -32,8 +35,8 @@
 /* Título no topo da tela */
 .register-container h2 {
   font-size: 1.5rem;
-  font-family: Arial, Helvetica, sans-serif;
-  color: black; /* Cor preta para o título */
+  font-family: "neulis";
+  color: #E09723; 
 }
 
 /* Estilo dos botões de seleção do tipo de cadastro */
@@ -46,6 +49,10 @@
 
 /* Botões maiores e mais quadrados */
 .register-container .user-type-button {
+
+}
+.tutor-type-button{
+
   width: 250px;
   height: 200px;
   padding: 15px;
@@ -55,14 +62,33 @@
   justify-content: center;
   align-items: center;
   font-size: 1.2rem;
-  background-color: #f4a261; /* Cor da paleta */
-  color: white;
+  background-image: radial-gradient(circle, #017618, #025913);
+  color: #FEFBDF;
   border: none;
   border-radius: 10px;
   cursor: pointer;
   position: relative;
 }
-
+.veterinario-type-button{
+  width: 250px;
+  height: 200px;
+  padding: 15px;
+  margin: 20px 0;
+  display: flex;
+  flex-direction: column; /* Ícones agora ficam acima do texto */
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  background-image: radial-gradient(circle, #FFBE16, #E09723);
+  color: #FEFBDF;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  position: relative;
+}
+.fas fa-user-md{
+  size: 50px;
+}
 /* Estilo dos ícones dentro dos botões */
 .register-container .user-type-button i {
   font-size: 4rem; /* Aumenta o tamanho do ícone */
