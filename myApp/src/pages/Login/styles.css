@@ -22,13 +22,12 @@
 }
 
 .login-tittle{
-  
 }
 /* Container do formulário de login */
 .login-container {
   width: 100%;
   max-width: 450px;
-  padding: 20px;
+  padding: 0px;
   border-radius: 10px;
   display: flex;
   flex-direction: column;

@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\igorl\\Aplicativo-Pet\\Backend\\Backend.csproj": {}
+    "C:\\Users\\André William\\OneDrive - Sociedade Educacional do Espírito Santo - UVV\\Documents\\POOII\\projeto 2b\\Aplicativo-Pet\\Backend\\Backend.csproj": {}
   },
   "projects": {
-    "C:\\Users\\igorl\\Aplicativo-Pet\\Backend\\Backend.csproj": {
+    "C:\\Users\\André William\\OneDrive - Sociedade Educacional do Espírito Santo - UVV\\Documents\\POOII\\projeto 2b\\Aplicativo-Pet\\Backend\\Backend.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\igorl\\Aplicativo-Pet\\Backend\\Backend.csproj",
+        "projectUniqueName": "C:\\Users\\André William\\OneDrive - Sociedade Educacional do Espírito Santo - UVV\\Documents\\POOII\\projeto 2b\\Aplicativo-Pet\\Backend\\Backend.csproj",
         "projectName": "Backend",
-        "projectPath": "C:\\Users\\igorl\\Aplicativo-Pet\\Backend\\Backend.csproj",
-        "packagesPath": "C:\\Users\\igorl\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\igorl\\Aplicativo-Pet\\Backend\\obj\\",
+        "projectPath": "C:\\Users\\André William\\OneDrive - Sociedade Educacional do Espírito Santo - UVV\\Documents\\POOII\\projeto 2b\\Aplicativo-Pet\\Backend\\Backend.csproj",
+        "packagesPath": "C:\\Users\\André William\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\André William\\OneDrive - Sociedade Educacional do Espírito Santo - UVV\\Documents\\POOII\\projeto 2b\\Aplicativo-Pet\\Backend\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\igorl\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\André William\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,6 +22,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
