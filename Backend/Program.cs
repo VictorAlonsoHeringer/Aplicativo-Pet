@@ -1,7 +1,6 @@
 using Backend.Models;
 using Backend.Services;
 using MongoDB.Driver;
-using MongoDB.Bson;
 using Microsoft.Extensions.Options;
 using Microsoft.AspNetCore.Cors;
 
@@ -19,17 +18,22 @@ builder.Services.AddSingleton<IMongoClient>(sp =>
     // Configurar MongoClientSettings usando a string de conexão
     var mongoSettings = MongoClientSettings.FromConnectionString(settings.ConnectionString);
 
-    // Definir a versão da API do servidor para a V1, como no exemplo da documentação
+    // Definir a versão da API do servidor para a V1
     mongoSettings.ServerApi = new ServerApi(ServerApiVersion.V1);
 
-    return new MongoClient(mongoSettings); // Retornar o MongoClient configurado
+    Console.WriteLine("MongoClient configurado com sucesso.");
+    return new MongoClient(mongoSettings);
 });
 
-// ** Registro dos Serviços **
+// Registro dos Serviços
 builder.Services.AddSingleton<TutorService>();
 builder.Services.AddSingleton<VeterinarioService>();
 builder.Services.AddSingleton<AnimalService>();
-builder.Services.AddSingleton<VacinaService>(); // Registro do VacinaService
+builder.Services.AddSingleton<VacinaService>();
+builder.Services.AddSingleton<VacinaDisponivelService>(); // Adicionado corretamente
+builder.Services.AddSingleton<SolicitacaoAgendamentoService>();
+builder.Services.AddSingleton<AgendamentoService>();
+
 
 // Configuração do CORS
 builder.Services.AddCors(options =>
@@ -64,4 +68,5 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 app.MapControllers();
 
+Console.WriteLine("Aplicação iniciada com sucesso.");
 app.Run();

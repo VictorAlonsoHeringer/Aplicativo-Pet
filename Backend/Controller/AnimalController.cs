@@ -1,4 +1,3 @@
-// AnimalController.cs
 using Microsoft.AspNetCore.Mvc;
 using Backend.Models;
 using Backend.Services;
@@ -26,10 +25,10 @@ namespace Backend.Controllers
 
             if (animal == null)
             {
-                return NotFound();
+                return NotFound(new { message = "Animal não encontrado." });
             }
 
-            return animal;
+            return Ok(animal);
         }
 
         // Método para obter todos os animais de um tutor por TutorId
@@ -40,11 +39,12 @@ namespace Backend.Controllers
 
             if (animals == null || animals.Count == 0)
             {
-                return Ok(new List<Animal>());
+                return NotFound(new { message = "Nenhum animal encontrado para este tutor." });
             }
 
             return animals;
         }
+
 
         // Método para criar um novo animal
         [HttpPost]
@@ -52,7 +52,12 @@ namespace Backend.Controllers
         {
             if (string.IsNullOrEmpty(animal.TutorId))
             {
-                return BadRequest(new { message = "TutorId é obrigatório" });
+                return BadRequest(new { message = "TutorId é obrigatório." });
+            }
+
+            if (string.IsNullOrEmpty(animal.Nome))
+            {
+                return BadRequest(new { message = "O nome do animal é obrigatório." });
             }
 
             await _animalService.CreateAsync(animal);

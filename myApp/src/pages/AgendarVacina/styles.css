@@ -1,0 +1,49 @@
+/* Estilo principal */
+.agendar-vacina {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  background-color: #f3f4f6;
+  color: #333; /* Cor do texto */
+}
+
+/* Título */
+.agendar-vacina h1 {
+  text-align: center;
+  color: #4caf50; /* Verde mais claro */
+  margin-bottom: 20px;
+}
+
+/* Lista de vacinas */
+.agendar-vacina ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.agendar-vacina .vacina-item {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  padding: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.agendar-vacina .vacina-item h3 {
+  font-size: 18px;
+  color: #4caf50; /* Nome da vacina em destaque */
+  margin: 0 0 10px 0;
+}
+
+.agendar-vacina .vacina-item p {
+  font-size: 16px;
+  margin: 5px 0;
+  color: #333; /* Cor visível do texto */
+}
+
+/* Mensagem de erro */
+.error-message {
+  color: red;
+  text-align: center;
+  font-size: 14px;
+  margin-bottom: 15px;
+}

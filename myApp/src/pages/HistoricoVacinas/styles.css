@@ -1,0 +1,17 @@
+.historico-container {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+.historico-list {
+    list-style-type: none;
+    padding: 0;
+}
+.historico-item {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+.error-message {
+    color: red;
+}

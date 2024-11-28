@@ -15,13 +15,20 @@ const HomePage: React.FC = () => {
   };
 
   const handleVaccineHistory = () => {
-    console.log("Histórico de Vacinas");
-    // Navegar para a página de histórico de vacinas
+    history.push('/agendamentos'); // Redirecionar para a página de histórico de agendamentos
   };
 
   const handleSettings = () => {
-    console.log("Configurações");
+    console.log('Configurações');
     // Navegar para a página de configurações
+  };
+
+  const handleSolicitacoesAgendamento = () => {
+    history.push('/solicitacoes-agendamentos'); // Redirecionar para a página de solicitações de agendamentos
+  };
+
+  const handleScheduleVaccine = () => {
+    history.push('/agendar-vacina'); // Redirecionar para a página de agendar vacina
   };
 
   return (
@@ -34,8 +41,12 @@ const HomePage: React.FC = () => {
         Gerenciar Animais
       </button>
 
+      <button className="home-button" onClick={handleScheduleVaccine}>
+        Agendar Vacina
+      </button>
+
       <button className="home-button" onClick={handleVaccineHistory}>
-        Histórico de Vacinas
+        Meus Agendamentos
       </button>
 
       <button className="home-button" onClick={handleSettings}>
@@ -44,9 +55,14 @@ const HomePage: React.FC = () => {
 
       {/* Opções específicas para veterinários */}
       {role === 'veterinario' && (
-        <button className="home-button" onClick={handleVaccineControl}>
-          Controle de Vacinas
-        </button>
+        <>
+          <button className="home-button" onClick={handleVaccineControl}>
+            Controle de Vacinas
+          </button>
+          <button className="home-button" onClick={handleSolicitacoesAgendamento}>
+            Solicitações de Agendamento
+          </button>
+        </>
       )}
     </div>
   );

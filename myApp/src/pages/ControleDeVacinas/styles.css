@@ -1,94 +1,63 @@
-/* Estilo Geral */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f8f4e4; /* Mesma cor da página principal */
+    background-color: #f3f4f6;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-}
-
-/* Container principal */
-.controle-de-vacinas {
+  }
+  
+  .vaccine-control {
     max-width: 600px;
     width: 100%;
-    background-color: #ffffff;
+    background-color: #fff;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     padding: 20px;
-    margin: 20px;
+  }
+  
+  h1 {
+    font-size: 24px;
     text-align: center;
-}
-
-/* Título principal */
-h1 {
-    font-size: 2rem;
-    color: #3a7d44; /* Verde similar ao botão */
+    color: #4caf50;
     margin-bottom: 20px;
-}
-
-/* Mensagem de erro */
-.error-message {
-    color: red;
-    font-size: 0.9rem;
-    margin-bottom: 10px;
-}
-
-/* Formulário */
-input[type="text"],
-input[type="date"] {
-    width: 80%;
+  }
+  
+  input {
+    width: 100%;
     padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ccc;
-    border-radius: 10px; /* Manter consistência com o design geral */
-    font-size: 1rem;
-    background-color: rgba(255, 255, 255, 0.9);
-    color: #333;
-}
-
-input:focus {
-    border-color: #3a7d44;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  input:focus {
+    border-color: #4caf50;
     outline: none;
-}
-
-/* Botão de ação */
-button {
-    background-color: #3a7d44; /* Mesma cor do botão na home */
+  }
+  
+  button {
+    background-color: #4caf50;
     color: white;
     border: none;
-    border-radius: 20px; /* Estilo arredondado */
+    border-radius: 5px;
     padding: 10px;
-    width: 80%;
-    font-size: 1.2rem;
     cursor: pointer;
-    margin-top: 15px;
+    font-size: 16px;
     transition: background-color 0.3s ease;
-}
-
-button:hover {
-    background-color: #2f6b38; /* Tom mais escuro no hover */
-}
-
-/* Lista de Vacinas */
-ul {
-    list-style: none;
-    padding: 0;
-    margin: 20px 0;
-}
-
-ul li {
-    background-color: #f9f9f9;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    padding: 10px;
-    margin: 10px 0;
-    text-align: left;
-    font-size: 1rem;
-    color: #3a7d44;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
+    width: 100%;
+  }
+  
+  button:hover {
+    background-color: #45a049;
+  }
+  
+  .error-message {
+    color: red;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  

@@ -1,7 +1,6 @@
 using Backend.Models;
 using MongoDB.Driver;
 using Microsoft.Extensions.Options;
-using BCrypt.Net;
 
 namespace Backend.Services
 {
@@ -17,46 +16,61 @@ namespace Backend.Services
 
         public async Task CreateVeterinarioAsync(Veterinario veterinario)
         {
-            var existingVet = await _veterinarios.Find(v => v.Email == veterinario.Email).FirstOrDefaultAsync();
-            if (existingVet != null)
+            if (string.IsNullOrEmpty(veterinario.Nome) ||
+                string.IsNullOrEmpty(veterinario.Email) ||
+                string.IsNullOrEmpty(veterinario.Senha) ||
+                string.IsNullOrEmpty(veterinario.Telefone) ||
+                string.IsNullOrEmpty(veterinario.Endereco))
             {
-                throw new InvalidOperationException("Este email já está registrado.");
+                throw new InvalidOperationException("Todos os campos obrigatórios devem ser preenchidos.");
             }
 
-            veterinario.Senha = BCrypt.Net.BCrypt.HashPassword(veterinario.Senha);
-            await _veterinarios.InsertOneAsync(veterinario);
+            try
+            {
+                await _veterinarios.InsertOneAsync(veterinario);
+                Console.WriteLine("Veterinário criado com sucesso.");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Erro ao criar veterinário: {ex.Message}");
+                throw new InvalidOperationException("Erro ao criar veterinário no servidor.", ex);
+            }
         }
 
-        public async Task<Veterinario?> ValidateLoginAsync(string email, string password)
+        public async Task<Veterinario?> GetAsync(string id)
         {
-            var veterinario = await _veterinarios.Find(v => v.Email == email).FirstOrDefaultAsync();
-            if (veterinario == null)
+            if (string.IsNullOrEmpty(id))
             {
-                return null;
+                throw new ArgumentException("ID não pode ser vazio.");
             }
 
-            bool isPasswordValid = BCrypt.Net.BCrypt.Verify(password, veterinario.Senha);
-            return isPasswordValid ? veterinario : null;
+            try
+            {
+                return await _veterinarios.Find(vet => vet.Id == id).FirstOrDefaultAsync();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Erro ao buscar veterinário por ID: {ex.Message}");
+                throw new InvalidOperationException("Erro ao buscar veterinário no servidor.", ex);
+            }
         }
 
-        public async Task<Veterinario?> GetAsync(string id) =>
-            await _veterinarios.Find(v => v.Id == id).FirstOrDefaultAsync();
-
-        public async Task<List<Veterinario>> GetAllAsync() =>
-            await _veterinarios.Find(v => true).ToListAsync();
-
-        public async Task UpdateAsync(string id, Veterinario updatedVeterinario)
+        public async Task<Veterinario?> ValidateLoginAsync(string email, string senha)
         {
-            var existingVeterinario = await _veterinarios.Find(v => v.Id == id).FirstOrDefaultAsync();
-            if (existingVeterinario != null)
+            if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(senha))
             {
-                updatedVeterinario.Senha = existingVeterinario.Senha;
+                throw new ArgumentException("Email e senha são obrigatórios.");
             }
 
-            await _veterinarios.ReplaceOneAsync(v => v.Id == id, updatedVeterinario);
+            try
+            {
+                return await _veterinarios.Find(vet => vet.Email == email && vet.Senha == senha).FirstOrDefaultAsync();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Erro ao validar login: {ex.Message}");
+                throw new InvalidOperationException("Erro ao validar login no servidor.", ex);
+            }
         }
-
-        public async Task RemoveAsync(string id) =>
-            await _veterinarios.DeleteOneAsync(v => v.Id == id);
     }
 }

@@ -20,6 +20,15 @@ namespace Backend.Controllers
         {
             try
             {
+                if (string.IsNullOrEmpty(newVet.Nome) ||
+                    string.IsNullOrEmpty(newVet.Email) ||
+                    string.IsNullOrEmpty(newVet.Senha) ||
+                    string.IsNullOrEmpty(newVet.Telefone) ||
+                    string.IsNullOrEmpty(newVet.Endereco))
+                {
+                    return BadRequest(new { message = "Todos os campos obrigatórios devem ser preenchidos." });
+                }
+
                 await _veterinarioService.CreateVeterinarioAsync(newVet);
                 return CreatedAtAction(nameof(GetVeterinario), new { id = newVet.Id }, newVet);
             }
