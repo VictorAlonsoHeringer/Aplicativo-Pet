@@ -1,66 +1,95 @@
-/* Container da tela de login */
-.login-container {
-  position: relative;
-  height: 95vh; /* Garante que o container tenha altura completa da tela */
+/* Container principal para dividir a tela em duas colunas */
+.main-container {
   display: flex;
-  flex-direction: column;
-  justify-content: flex-end; /* Move os campos para a parte inferior */
-  align-items: center;
-  padding-bottom: 40px; /* Espaçamento na parte inferior */
-  background-image: url('/images/dog.webp'); /* Imagem de fundo */
+  height: 100vh;
+}
+
+/* Coluna da esquerda com a imagem */
+.left-column {
+  flex: 1;
+  background-image: url('/images/dog.webp');
   background-size: cover;
   background-position: center;
-  background-repeat: no-repeat;
 }
 
-/* Estilo para os campos de input */
-.login-container .input-field {
-  width: 80%;
+/* Coluna da direita com o formulário de login */
+.right-column {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: antiquewhite;
+}
+
+.login-tittle{
+}
+/* Container do formulário de login */
+.login-container {
+  width: 100%;
+  max-width: 450px;
+  padding: 0px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Estilo dos campos de input */
+.input-field {
+  width: 100%;
   padding: 10px;
   margin: 10px 0;
-  border-radius: 10px; /* Mantém os inputs arredondados */
+  border-radius: 10px;
   border: 1px solid #ccc;
   color: #333;
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(228, 228, 228, 0.8);
 }
 
-/* Estilo para o container dos botões */
-.login-container .button-container {
+/* Container dos botões */
+.button-container {
   display: flex;
-  justify-content: space-between; /* Espaçamento entre os botões */
-  width: 80%; /* Mesma largura que os campos de input */
+  justify-content: space-between;
+  width: 100%;
   margin-top: 10px;
 }
 
-/* Estilo dos botões de login e cadastro */
-.login-container .login-button{
-  width: 48%; /* Cada botão ocupa metade do container */
+/* Botões */
+.login-button,
+.register-button {
+  width: 48%;
   padding: 10px;
-  background-color: #3a7d44; /* Cor do botão de login */
   color: white;
-  border: none;
-  border-radius: 5px; /* Deixa os botões mais quadrados */
-  text-align: center;
-  cursor: pointer;
-}
-
-.login-container .register-button {
-  width: 48%; /* Cada botão ocupa metade do container */
-  padding: 10px;
-  background-color: #f4a261; /* Cor do botão de login */
-  color: white;
-  border: none;
-  border-radius: 5px; /* Deixa os botões mais quadrados */
-  text-align: center;
-  cursor: pointer;
-}
-
-.login-container .google-login-button {
-  width: 80%;
-  padding: 10px;
-  background-color: #e0e0e0;
-  color: black;
   border: none;
   border-radius: 5px;
-  margin-top: 10px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.login-button {
+  background-color: #3a7d44;
+}
+
+.register-button {
+  background-color: #f4a261;
+}
+
+/* Media query para dispositivos móveis */
+@media (max-width: 768px) {
+  .main-container {
+    flex-direction: column;
+  }
+
+  .left-column {
+    height: 40vh;
+  }
+
+  .right-column {
+    flex: none;
+    height: auto;
+    padding: 20px;
+  }
+
+  .login-container {
+    width: 90%;
+  }
 }
