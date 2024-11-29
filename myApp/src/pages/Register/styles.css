@@ -20,26 +20,13 @@
 /* Ícone de Voltar no canto superior esquerdo */
 .back-icon {
   position:absolute;
-  top: 1%;
-  left: 1%;
+  top: 10px; /* Ajusta a posição vertical */
+  left: 10px; /* Ajusta a posição horizontal */
+  z-index: 10; /* Garante que o ícone fique acima de outros elementos */
   background: none;
   border: none;
   font-size: 1.5rem;
   cursor: pointer;
-}/* Estilos para o ícone de voltar */
-.back-icon {
-  position: absolute;
-  top: 10px; /* Ajusta a posição vertical */
-  left: 10px; /* Ajusta a posição horizontal */
-  z-index: 10; /* Garante que o ícone fique acima de outros elementos */
-}
-
-/* Media query para dispositivos móveis */
-@media (max-width: 768px) {
-  .back-icon {
-    top: 0px; /* Ajusta a posição vertical para mobile */
-    left: -60px; /* Ajusta a posição horizontal para mobile */
-  }
 }
 
 

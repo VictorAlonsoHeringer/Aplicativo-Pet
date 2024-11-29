@@ -9,6 +9,7 @@ import AnimalList from './pages/AnimalList';
 import AnimalForm from './pages/AnimalForm';
 import ControleDeVacinas from './pages/ControleDeVacinas';
 import AgendarVacina from './pages/AgendarVacina'; 
+import AgendarVacinaForm from './pages/AgendarVacinaForm'; 
 import SolicitacoesAgendamentos from './pages/SolicitacoesAgendamentos';
 import Agendamentos from './pages/Agendamentos';
 import HistoricoVacinas from './pages/HistoricoVacinas';
@@ -22,8 +23,10 @@ const App: React.FC = () => (
         <Route exact path="/home" component={Home} />
         <Route exact path="/animal-list" component={AnimalList} />
         <Route exact path="/animal-form" component={AnimalForm} />
+        <Route exact path="/animal-form/:animalId" component={AnimalForm} />
         <Route exact path="/vaccine-control" component={ControleDeVacinas} />
         <Route exact path="/agendar-vacina" component={AgendarVacina} />
+        <Route exact path="/agendar/:vacinaId" component={AgendarVacinaForm} />
         <Route exact path="/solicitacoes-agendamentos" component={SolicitacoesAgendamentos} />
         <Route exact path="/historico-vacinas" component={HistoricoVacinas} />
         <Route exact path="/agendamentos" component={Agendamentos} />

@@ -93,9 +93,9 @@ const RegisterPage: React.FC = () => {
   return (
     <div className="register-container">
       {/* Ícone de Voltar no canto superior esquerdo */}
-      <button onClick={handleLoginRedirect} className="back-icon">
+      <div onClick={handleLoginRedirect} className="back-icon">
         <img src="public\images\botao_voltar_verde.svg" alt="Voltar"/>
-      </button>
+      </div>
 
       {userType === '' && (
         <div className="choose-container">

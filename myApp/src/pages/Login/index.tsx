@@ -33,9 +33,11 @@ const Login: React.FC = () => {
 
         if (userType === 'tutor' && data.tutor) {
           localStorage.setItem('userId', data.tutor.id);
+          localStorage.setItem('username', data.tutor.nome);
           localStorage.setItem('role', 'tutor');
         } else if (userType === 'veterinario' && data.veterinario) {
           localStorage.setItem('userId', data.veterinario.id);
+          localStorage.setItem('username', data.veterinario.nome);
           localStorage.setItem('role', 'veterinario');
         } else {
           throw new Error('Formato de resposta inválido.');

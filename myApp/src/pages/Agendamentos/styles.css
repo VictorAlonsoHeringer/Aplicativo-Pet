@@ -1,70 +1,91 @@
 /* Container principal */
 .agendamentos-container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    font-family: Arial, sans-serif;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  /* Título */
-  .agendamentos-container h1 {
-    text-align: center;
-    color: #333;
-    margin-bottom: 20px;
-  }
-  
-  /* Mensagem de erro */
-  .error-message {
-    color: red;
-    font-weight: bold;
-    text-align: center;
-    margin-bottom: 10px;
-  }
-  
-  /* Lista de agendamentos */
-  .agendamento-item {
-    list-style: none;
-    margin-bottom: 15px;
-    padding: 15px;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    background-color: #fff;
-    transition: transform 0.2s, box-shadow 0.2s;
-  }
-  
-  .agendamento-item:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  }
-  
-  /* Detalhes do agendamento */
-  .agendamento-item p {
-    margin: 5px 0;
-    font-size: 14px;
-    color: #555;
-  }
-  
-  /* Destacar título */
-  .agendamento-item p strong {
-    color: #333;
-  }
-  
-  /* Estilização do status */
-  .status-pendente {
-    color: #d7a200;
-    font-weight: bold;
-  }
-  
-  .status-confirmado {
-    color: #28a745;
-    font-weight: bold;
-  }
-  
-  .status-cancelado {
-    color: #dc3545;
-    font-weight: bold;
-  }
-  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  height: 100vh;
+  background-color: #f8f4e4; /* Fundo suave */
+  padding: 20px;
+  overflow-y: auto; /* Permite rolagem se necessário */
+}
+
+/* Título da tela */
+.agendamentos-container h1 {
+  font-size: 2rem;
+  color: #3a7d44; /* Verde escuro */
+  margin-bottom: 20px;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* Mensagens de erro */
+.error-message {
+  color: #d32f2f;
+  background-color: #fdecea;
+  font-size: 1rem;
+  padding: 10px;
+  border-radius: 10px;
+  width: 80%;
+  text-align: center;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Mensagem de lista vazia */
+.agendamentos-container p {
+  font-size: 1rem;
+  color: #555555; /* Texto cinza claro */
+  text-align: center;
+}
+
+/* Lista de agendamentos */
+ul {
+  list-style-type: none;
+  padding: 0;
+  width: 100%;
+  max-width: 600px;
+}
+
+/* Itens de agendamentos */
+.agendamento-item {
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 15px;
+  padding: 20px;
+  margin-bottom: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.agendamento-item:hover {
+  transform: scale(1.02);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Informações do agendamento */
+.agendamento-item p {
+  font-size: 1rem;
+  color: #333333; /* Texto primário */
+  margin: 5px 0;
+}
+
+.agendamento-item strong {
+  color: #3a7d44; /* Verde escuro para destaque */
+}
+
+/* Status do agendamento */
+.status-pendente {
+  color: #ffa000; /* Laranja para status pendente */
+  font-weight: bold;
+}
+
+.status-confirmado {
+  color: #2e7d32; /* Verde para status confirmado */
+  font-weight: bold;
+}
+
+.status-cancelado {
+  color: #d32f2f; /* Vermelho para status cancelado */
+  font-weight: bold;
+}

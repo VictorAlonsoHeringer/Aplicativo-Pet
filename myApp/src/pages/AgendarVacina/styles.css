@@ -1,49 +1,100 @@
-/* Estilo principal */
-.agendar-vacina {
+/* Estilo Principal da Tela */
+.listar-vacinas {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  height: 100vh;
+  background-color: #f8f4e4; /* Fundo suave */
   padding: 20px;
-  font-family: Arial, sans-serif;
-  background-color: #f3f4f6;
-  color: #333; /* Cor do texto */
+  overflow-y: auto;
+}
+
+/* Botão Voltar */
+.back-icon {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  cursor: pointer;
+}
+
+.back-icon img {
+  width: 30px;
+  height: 30px;
 }
 
 /* Título */
-.agendar-vacina h1 {
-  text-align: center;
-  color: #4caf50; /* Verde mais claro */
+.listar-vacinas h1 {
+  font-size: 2rem;
+  color: #3a7d44; /* Verde escuro */
   margin-bottom: 20px;
+  text-align: center;
+  font-weight: bold;
 }
 
-/* Lista de vacinas */
-.agendar-vacina ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-.agendar-vacina .vacina-item {
-  background-color: #fff;
-  border: 1px solid #ddd;
+/* Mensagens de Erro */
+.error-message {
+  color: #d32f2f;
+  background-color: #fdecea;
+  font-size: 1rem;
+  padding: 10px;
   border-radius: 10px;
-  margin-bottom: 15px;
-  padding: 15px;
+  width: 80%;
+  text-align: center;
+  margin-bottom: 20px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.agendar-vacina .vacina-item h3 {
-  font-size: 18px;
-  color: #4caf50; /* Nome da vacina em destaque */
-  margin: 0 0 10px 0;
+/* Lista de Vacinas */
+ul {
+  list-style-type: none;
+  padding: 0;
+  width: 100%;
+  max-width: 600px;
 }
 
-.agendar-vacina .vacina-item p {
-  font-size: 16px;
-  margin: 5px 0;
-  color: #333; /* Cor visível do texto */
-}
-
-/* Mensagem de erro */
-.error-message {
-  color: red;
-  text-align: center;
-  font-size: 14px;
+.vacina-item {
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 15px;
+  padding: 20px;
   margin-bottom: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.vacina-item:hover {
+  transform: scale(1.02);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Título e Informações da Vacina */
+.vacina-item h3 {
+  font-size: 1.5rem;
+  color: #3a7d44; /* Destaque para o título */
+  justify-self: center;
+  margin: 5px;
+}
+
+.vacina-item p {
+  font-size: 1rem;
+  color: #555555; /* Texto secundário */
+  margin: 15px;
+}
+
+/* Botão Agendar */
+.vacina-item button {
+  background-color: #3a7d44;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  width: 100%;
+}
+
+.vacina-item button:hover {
+  background-color: #2f6b38;
 }

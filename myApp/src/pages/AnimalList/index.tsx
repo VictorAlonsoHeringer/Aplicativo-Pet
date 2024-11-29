@@ -62,10 +62,10 @@ const AnimalList: React.FC = () => {
   };
 
   return (
-    <div className="animal-container">
-      <button onClick={handleHomeRedirect} className="back-icon">
-        <i className="fas fa-arrow-left"></i>
-      </button>
+    <div className="animal-container-list">
+      <div onClick={handleHomeRedirect} className="back-icon">
+        <img src="public\images\botao_voltar_verde.svg" alt="Voltar"/>
+      </div>
       <h1>Meus Animais</h1>
       <p>Aqui estão listados todos os seus animais cadastrados.</p>
 
@@ -78,7 +78,14 @@ const AnimalList: React.FC = () => {
       ) : animals.length > 0 ? (
         <div className="animal-list">
           {animals.map((animal) => (
-            <div key={animal.id} className="animal-item">
+            <div
+              key={animal.id}
+              className="animal-item"
+              onClick={() => history.push(`/animal-form/${animal.id}`)}
+              role="button"
+              tabIndex={0}
+              style={{ cursor: "pointer" }}
+            >
               <strong>{animal.nome}</strong> - {animal.raca} - {animal.idade} anos
             </div>
           ))}

@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
+import { useHistory } from 'react-router-dom';
 import "./styles.css";
 
 const Agendamentos: React.FC = () => {
+  const history = useHistory();
   const [agendamentos, setAgendamentos] = useState([]);
   const [errorMessage, setErrorMessage] = useState("");
 
@@ -39,8 +41,15 @@ const Agendamentos: React.FC = () => {
     fetchAgendamentos();
   }, []);
 
+  const handleHomeRedirect = () => {
+    history.push('/home');
+  };
+
   return (
     <div className="agendamentos-container">
+      <div onClick={handleHomeRedirect} className="back-icon">
+        <img src="public/images/botao_voltar_verde.svg" alt="Voltar" />
+      </div>
       <h1>Meus Agendamentos</h1>
       {errorMessage && <p className="error-message">{errorMessage}</p>}
       {agendamentos.length === 0 && !errorMessage ? (

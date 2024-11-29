@@ -1,0 +1,98 @@
+/* Container principal */
+.cadastrar-agendamento {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    background-color: #f8f4e4;
+    padding: 20px;
+  }
+  
+  .cadastrar-agendamento h1 {
+    font-size: 2rem;
+    color: #3a7d44; /* Verde similar */
+    margin-bottom: 20px;
+  }
+  
+  .cadastrar-agendamento h2 {
+    color: #3a7d44; /* Verde similar */
+    margin-bottom: 20px;
+  }
+  
+  /* Mensagens de sucesso e erro */
+  .success-message,
+  .error-message {
+    font-size: 1rem;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+    width: 80%;
+  }
+  
+  .success-message {
+    color: #2e7d32;
+    background-color: #e8f5e9; /* Fundo verde claro */
+  }
+  
+  .error-message {
+    color: #d32f2f;
+    background-color: #fdecea; /* Fundo vermelho claro */
+  }
+  
+  /* Formulário de agendamento */
+  .agendamento-form {
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .agendamento-form label {
+    font-size: 1rem;
+    color: #3a7d44;
+    margin: 10px 0 5px;
+    width: 100%;
+    text-align: left;
+  }
+  
+  .agendamento-form input {
+    width: 100%;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    background-color: rgba(255, 255, 255, 0.8);
+    font-size: 1rem;
+    color: #333;
+  }
+  
+  .agendamento-form select {
+    width: 100%;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    background-color: rgba(255, 255, 255, 0.8);
+    font-size: 1rem;
+    color: #333;
+  }
+  
+  /* Botões */
+  .agendamento-form button {
+    background-color: #3a7d44;
+    color: white;
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 20px;
+    width: 100%;
+    font-size: 1.2rem;
+    cursor: pointer;
+  }
+  
+  .agendamento-form button:hover {
+    background-color: #2f6b38;
+  }
+  

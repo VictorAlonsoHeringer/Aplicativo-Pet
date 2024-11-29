@@ -63,5 +63,40 @@ namespace Backend.Controllers
             await _animalService.CreateAsync(animal);
             return CreatedAtAction(nameof(GetById), new { id = animal.Id }, animal);
         }
+
+        // Atualizar um animal
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Update(string id, [FromBody] Animal updatedAnimal)
+        {
+            var animal = await _animalService.GetByIdAsync(id);
+
+            if (animal == null)
+            {
+                return NotFound(new { message = "Animal não encontrado." });
+            }
+
+            updatedAnimal.Id = id; // Garante que o ID seja mantido
+            await _animalService.UpdateAsync(id, updatedAnimal);
+
+            return NoContent();
+        }
+
+        // Deletar um animal
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(string id)
+        {
+            var animal = await _animalService.GetByIdAsync(id);
+
+            if (animal == null)
+            {
+                return NotFound(new { message = "Animal não encontrado." });
+            }
+
+            await _animalService.DeleteAsync(id);
+
+            return NoContent();
+        }
+
+
     }
 }

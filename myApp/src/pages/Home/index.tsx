@@ -18,11 +18,6 @@ const HomePage: React.FC = () => {
     history.push('/agendamentos'); // Redirecionar para a página de histórico de agendamentos
   };
 
-  const handleSettings = () => {
-    console.log('Configurações');
-    // Navegar para a página de configurações
-  };
-
   const handleSolicitacoesAgendamento = () => {
     history.push('/solicitacoes-agendamentos'); // Redirecionar para a página de solicitações de agendamentos
   };
@@ -47,10 +42,6 @@ const HomePage: React.FC = () => {
 
       <button className="home-button" onClick={handleVaccineHistory}>
         Meus Agendamentos
-      </button>
-
-      <button className="home-button" onClick={handleSettings}>
-        Configurações
       </button>
 
       {/* Opções específicas para veterinários */}

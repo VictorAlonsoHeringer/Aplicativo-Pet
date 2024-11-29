@@ -56,5 +56,47 @@ namespace Backend.Services
                 throw new InvalidOperationException("Erro ao criar animal no servidor.", ex);
             }
         }
+
+        // Atualiza um animal existente
+        public async Task UpdateAsync(string id, Animal updatedAnimal)
+        {
+            try
+            {
+                var result = await _animals.ReplaceOneAsync(animal => animal.Id == id, updatedAnimal);
+
+                if (result.MatchedCount == 0)
+                {
+                    throw new InvalidOperationException("Nenhum animal encontrado com o ID especificado.");
+                }
+
+                Console.WriteLine("Animal atualizado com sucesso.");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Erro ao atualizar animal: {ex.Message}");
+                throw new InvalidOperationException("Erro ao atualizar animal no servidor.", ex);
+            }
+        }
+
+        // Remove um animal existente
+        public async Task DeleteAsync(string id)
+        {
+            try
+            {
+                var result = await _animals.DeleteOneAsync(animal => animal.Id == id);
+
+                if (result.DeletedCount == 0)
+                {
+                    throw new InvalidOperationException("Nenhum animal encontrado com o ID especificado.");
+                }
+
+                Console.WriteLine("Animal removido com sucesso.");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Erro ao remover animal: {ex.Message}");
+                throw new InvalidOperationException("Erro ao remover animal no servidor.", ex);
+            }
+        }
     }
 }
