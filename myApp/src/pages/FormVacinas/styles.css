@@ -1,0 +1,83 @@
+.vaccine-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    padding: 20px;
+    background-color: #f8f4e4;
+  }
+  
+  /* Título do formulário */
+  .vaccine-form h1 {
+    font-size: 1.8rem;
+    color: #3a7d44; /* Verde claro */
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .vaccine-form label {
+    display: block;
+    font-size: 1rem;
+    color: #333;
+    align-self: start;
+    margin-bottom: 5px;
+  }
+
+  /* Mensagem de erro */
+  .error-message {
+    color: #d32f2f;
+    background-color: #fdecea;
+    font-size: 1rem;
+    padding: 10px;
+    border-radius: 5px;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Campo de entrada */
+  .vaccine-form input[type="text"],
+  .vaccine-form input[type="date"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    color: #333;
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+    transition: border-color 0.3s ease;
+  }
+  
+  .vaccine-form input[type="text"]:focus,
+  .vaccine-form input[type="date"]:focus {
+    border-color: #3a7d44; /* Verde claro */
+    outline: none;
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+  }
+  
+  /* Botão */
+  .vaccine-form button {
+    background-color: #3a7d44;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 15px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .vaccine-form button:hover {
+    background-color: #3a7d44; /* Verde mais escuro */
+    transform: scale(1.02);
+  }
+  
+  .vaccine-form button:active {
+    transform: scale(1);
+  }
+  

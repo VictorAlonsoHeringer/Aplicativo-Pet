@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 import "./styles.css";
 
 const SolicitacoesAgendamentos: React.FC = () => {
+  const history = useHistory();
   const [solicitacoes, setSolicitacoes] = useState<Solicitacao[]>([]);
   const [errorMessage, setErrorMessage] = useState<string>("");
 
@@ -77,8 +79,15 @@ const SolicitacoesAgendamentos: React.FC = () => {
     }
   };
 
+  const handleHomeRedirect = () => {
+    history.push("/home");
+  };
+
   return (
     <div className="solicitacoes-container">
+      <div onClick={handleHomeRedirect} className="back-icon">
+        <img src="public/images/botao_voltar_verde.svg" alt="Voltar" />
+      </div>
       <h1>Solicitações de Agendamentos</h1>
       {errorMessage && <p className="error-message">{errorMessage}</p>}
 

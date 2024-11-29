@@ -11,7 +11,7 @@ const HomePage: React.FC = () => {
   };
 
   const handleVaccineControl = () => {
-    history.push('/vaccine-control'); // Redirecionar para a página de controle de vacinas
+    history.push('/vacina-list'); // Redirecionar para a página de controle de vacinas
   };
 
   const handleVaccineHistory = () => {
@@ -32,18 +32,21 @@ const HomePage: React.FC = () => {
       <p>Escolha uma das opções abaixo para começar:</p>
 
       {/* Opções disponíveis para todos */}
-      <button className="home-button" onClick={handleAnimalsManagement}>
-        Gerenciar Animais
-      </button>
+      {role === 'tutor' && (
+        <>
+          <button className="home-button" onClick={handleAnimalsManagement}>
+            Gerenciar Animais
+          </button>
 
-      <button className="home-button" onClick={handleScheduleVaccine}>
-        Agendar Vacina
-      </button>
+          <button className="home-button" onClick={handleScheduleVaccine}>
+            Agendar Vacina
+          </button>
 
-      <button className="home-button" onClick={handleVaccineHistory}>
-        Meus Agendamentos
-      </button>
-
+          <button className="home-button" onClick={handleVaccineHistory}>
+            Meus Agendamentos
+          </button>
+        </>
+      )}
       {/* Opções específicas para veterinários */}
       {role === 'veterinario' && (
         <>

@@ -1,0 +1,52 @@
+.vaccine-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  padding: 20px;
+  background-color: #f8f4e4;
+}
+
+.vaccine-list {
+  width: 100%;
+  max-width: 600px;
+}
+
+.vaccine-item {
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  padding: 15px;
+  margin: 10px 0;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.vaccine-item h2 {
+  color: #4caf50;
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  justify-self: center;
+}
+
+.vaccine-item:hover {
+  background-color: #f0f0f0;
+}
+
+.add-button {
+  background-color: #3a7d44;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 10px 20px;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+.add-button:hover {
+  background-color: #3a7d44;
+}
+
+.error-message {
+  color: red;
+  margin-bottom: 10px;
+}

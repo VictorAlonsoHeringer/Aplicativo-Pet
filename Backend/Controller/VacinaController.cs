@@ -79,5 +79,26 @@ namespace Backend.Controllers
                 return StatusCode(500, new { message = "Erro ao buscar vacinas." });
             }
         }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetById(string id)
+        {
+            try
+            {
+                var vacina = await _vacinaService.GetByIdAsync(id);
+
+                if (vacina == null)
+                {
+                    return NotFound(new { message = "Vacina não encontrada." });
+                }
+
+                return Ok(vacina);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Erro ao buscar vacina por ID: {ex.Message}");
+                return StatusCode(500, new { message = "Erro ao buscar vacina." });
+            }
+        }
     }
 }

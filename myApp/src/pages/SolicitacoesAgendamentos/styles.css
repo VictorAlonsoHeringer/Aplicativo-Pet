@@ -1,20 +1,100 @@
-.approve-button {
-  background-color: #4caf50;
-  color: white;
-  border: none;
-  padding: 5px 10px;
-  cursor: pointer;
+/* Container principal */
+.solicitacoes-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background-color: #f8f4e4;
+  min-height: 100vh;
 }
 
+/* Título principal */
+.solicitacoes-container h1 {
+  font-size: 1.8rem;
+  color: #4caf50; /* Verde */
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Mensagem de erro */
+.error-message {
+  color: #d32f2f;
+  background-color: #fdecea;
+  font-size: 1rem;
+  padding: 10px;
+  border-radius: 5px;
+  width: 100%;
+  text-align: center;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Lista de solicitações */
+.solicitacoes-container ul {
+  list-style: none;
+  padding: 0;
+  width: 100%;
+  max-width: 600px;
+}
+
+/* Item da solicitação */
+.solicitacao-item {
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  padding: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Texto dentro do item */
+.solicitacao-item p {
+  font-size: 1rem;
+  color: #333;
+  margin: 5px 0;
+}
+
+/* Botões de ação */
+.action-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+.approve-button,
 .reject-button {
-  background-color: #f44336;
-  color: white;
+  padding: 10px 15px;
+  font-size: 1rem;
   border: none;
-  padding: 5px 10px;
+  border-radius: 5px;
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-.approve-button:hover,
+/* Botão de Aprovar */
+.approve-button {
+  background-color: #4caf50; /* Verde */
+  color: white;
+}
+
+.approve-button:hover {
+  background-color: #45a049; /* Verde mais escuro */
+}
+
+/* Botão de Recusar */
+.reject-button {
+  background-color: #f44336; /* Vermelho */
+  color: white;
+}
+
 .reject-button:hover {
-  opacity: 0.8;
+  background-color: #d32f2f; /* Vermelho mais escuro */
+}
+
+/* Texto vazio */
+.solicitacoes-container p {
+  font-size: 1rem;
+  color: #555;
+  text-align: center;
+  margin-top: 20px;
 }
