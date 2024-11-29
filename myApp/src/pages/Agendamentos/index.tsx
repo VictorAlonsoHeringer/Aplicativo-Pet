@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useHistory } from 'react-router-dom';
+import { useHistory } from "react-router-dom";
 import "./styles.css";
 
 const Agendamentos: React.FC = () => {
@@ -21,8 +21,6 @@ const Agendamentos: React.FC = () => {
           `http://localhost:5164/api/agendamentos/${tutorId}`
         );
 
-        console.log("Resposta bruta do servidor:", response);
-
         if (!response.ok) {
           const error = await response.json().catch(() => null);
           console.error("Erro do servidor:", error);
@@ -42,18 +40,18 @@ const Agendamentos: React.FC = () => {
   }, []);
 
   const handleHomeRedirect = () => {
-    history.push('/home');
+    history.push("/home");
   };
 
   return (
     <div className="agendamentos-container">
       <div onClick={handleHomeRedirect} className="back-icon">
-        <img src="public/images/botao_voltar_verde.svg" alt="Voltar" />
+        <img src="/images/botao_voltar_verde.svg" alt="Voltar" />
       </div>
       <h1>Meus Agendamentos</h1>
       {errorMessage && <p className="error-message">{errorMessage}</p>}
       {agendamentos.length === 0 && !errorMessage ? (
-        <p>Nenhum agendamento encontrado.</p>
+        <p className="empty-message">Nenhum agendamento encontrado.</p>
       ) : (
         <ul>
           {agendamentos.map((agendamento: any) => (
@@ -75,11 +73,17 @@ const Agendamentos: React.FC = () => {
                 <strong>Status:</strong>{" "}
                 <span
                   className={
-                    agendamento.status === "Pendente"
+                    agendamento.status?.toLowerCase() === "pendente"
                       ? "status-pendente"
-                      : agendamento.status === "Confirmado"
+                      : agendamento.status?.toLowerCase() === "confirmado"
                       ? "status-confirmado"
-                      : "status-cancelado"
+                      : agendamento.status?.toLowerCase() === "cancelado"
+                      ? "status-cancelado"
+                      : agendamento.status?.toLowerCase() === "aprovado"
+                      ? "status-aprovado"
+                      : agendamento.status?.toLowerCase() === "recusado"
+                      ? "status-recusado"
+                      : "status-aguardando"
                   }
                 >
                   {agendamento.status || "Aguardando confirmação"}

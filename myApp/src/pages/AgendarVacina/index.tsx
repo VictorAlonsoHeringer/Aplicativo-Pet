@@ -36,23 +36,25 @@ const AgendarVacina: React.FC = () => {
   return (
     <div className="listar-vacinas">
       <div onClick={handleHomeRedirect} className="back-icon">
-        <img src="public/images/botao_voltar_verde.svg" alt="Voltar" />
+        <img src="/images/botao_voltar_verde.svg" alt="Voltar" />
       </div>
       <h1>Vacinas Disponíveis</h1>
       {successMessage && <p className="success-message">{successMessage}</p>}
       {errorMessage && <p className="error-message">{errorMessage}</p>}
-      <ul>
-        {vacinas.map((vacina) => (
-          <li key={vacina.id} className="vacina-item">
-            <h3>{vacina.nome}</h3>
-            <p>Tipo: {vacina.tipo}</p>
-            <p>Clínica: {vacina.clinica}</p>
-            <p>Endereço: {vacina.endereco}</p>
-            <p>Veterinário: {vacina.veterinario}</p>
-            <button onClick={() => handleAgendarRedirect(vacina.id)}>Agendar</button>
-          </li>
-        ))}
-      </ul>
+      <div className="vacinas-list-container">
+        <ul className="vacinas-list">
+          {vacinas.map((vacina) => (
+            <li key={vacina.id} className="vacina-item">
+              <h3 className="vacina-nome">{vacina.nome}</h3>
+              <p><strong>Tipo:</strong> {vacina.tipo}</p>
+              <p><strong>Clínica:</strong> {vacina.clinica}</p>
+              <p><strong>Endereço:</strong> {vacina.endereco}</p>
+              <p><strong>Veterinário:</strong> {vacina.veterinario}</p>
+              <button onClick={() => handleAgendarRedirect(vacina.id)}>Agendar</button>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 };

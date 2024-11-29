@@ -7,7 +7,19 @@
   height: 100vh;
   background-color: #f8f4e4; /* Fundo suave */
   padding: 20px;
-  overflow-y: auto; /* Permite rolagem se necessário */
+  overflow-y: auto; /* Permite rolagem vertical */
+}
+
+/* Botão de voltar */
+.back-icon {
+  align-self: flex-start;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.back-icon img {
+  width: 30px;
+  height: auto;
 }
 
 /* Título da tela */
@@ -33,10 +45,11 @@
 }
 
 /* Mensagem de lista vazia */
-.agendamentos-container p {
+.empty-message {
   font-size: 1rem;
   color: #555555; /* Texto cinza claro */
   text-align: center;
+  margin-top: 20px;
 }
 
 /* Lista de agendamentos */
@@ -87,5 +100,20 @@ ul {
 
 .status-cancelado {
   color: #d32f2f; /* Vermelho para status cancelado */
+  font-weight: bold;
+}
+
+.status-aprovado {
+  color: #4caf50; /* Verde claro para status aprovado */
+  font-weight: bold;
+}
+
+.status-recusado {
+  color: #f44336; /* Vermelho escuro para status recusado */
+  font-weight: bold;
+}
+
+.status-aguardando {
+  color: #9e9e9e; /* Cinza para status desconhecido */
   font-weight: bold;
 }
