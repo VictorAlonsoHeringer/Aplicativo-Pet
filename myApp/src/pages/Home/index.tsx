@@ -26,6 +26,14 @@ const HomePage: React.FC = () => {
     history.push('/agendar-vacina'); // Redirecionar para a página de agendar vacina
   };
 
+  const handleLogout = () => {
+    localStorage.removeItem('userId');
+    localStorage.removeItem('username');
+    localStorage.removeItem('role');
+    // Redirecionar para a página de login
+    history.push('/');
+  };
+
   return (
     <div className="home-container">
       <h1>Bem-vindo!</h1>
@@ -58,6 +66,10 @@ const HomePage: React.FC = () => {
           </button>
         </>
       )}
+      {/* Botão de Logout */}
+        <button className="logout-button" onClick={handleLogout}>
+          Encerrar Sessão
+        </button>
     </div>
   );
 };
